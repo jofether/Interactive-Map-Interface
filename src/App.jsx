@@ -138,12 +138,15 @@ function App() {
   const activeLocation = locations.find(l => l.id === activePin);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex overflow-hidden">
+    // [BUG - Layers] Main container z-index broken - [FIX: remove relative z-index manipulation]
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex overflow-hidden relative -z-50">
       {/* SIDEBAR */}
-      <div className={`${sidebarOpen ? 'w-96' : 'w-0'} bg-slate-800 border-r border-slate-700 transition-all duration-300 flex flex-col overflow-hidden`}>
+      {/* [BUG - Layout] Sidebar flexbox direction broken - [FIX: should be flex-col, not flex-row] */}
+      <div className={`${sidebarOpen ? 'w-96' : 'w-0'} bg-slate-800 border-r border-slate-700 transition-all duration-300 flex flex-row overflow-hidden`}>
         {/* Stats Cards */}
         <div className="p-6 border-b border-slate-700 space-y-3">
-          <div className="grid grid-cols-2 gap-3">
+          {/* [BUG - Typo] Grid columns typo broken - [FIX: should be grid-cols-2, not grid-cols-12] */}
+          <div className="grid grid-cols-12 gap-3">
             <div className="bg-slate-700 rounded-lg p-4">
               <div className="text-xs text-slate-400 font-semibold uppercase tracking-wide">Locations</div>
               <div className="text-2xl font-bold text-white mt-1">{stats.totalLocations}</div>
@@ -165,12 +168,13 @@ function App() {
 
         {/* Search & Filter */}
         <div className="p-6 border-b border-slate-700 space-y-4">
+          {/* [BUG - Typo] Rounded utility class typo and focus ring color doesn't exist - [FIX: should be rounded-lg and focus:ring-blue-500] */}
           <input
             type="text"
             placeholder="Search locations..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-xll text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-5"
           />
           <div className="space-y-2">
             <label className="text-xs text-slate-400 font-semibold uppercase tracking-wide block">Filter by Type</label>
@@ -228,9 +232,10 @@ function App() {
       {/* MAIN CONTENT */}
       <div className="flex-1 flex flex-col">
         {/* HEADER */}
-        <div className="bg-slate-800 border-b border-slate-700 px-8 py-6 flex items-center justify-between">
+        <div className="bg-slate-800 border-b border-slate-700 px-8 py-6 flex items-center justify-between\">
           <div>
-            <h1 className="text-3xl font-bold text-white">Global Operations</h1>
+            {/* [BUG - Color/Contrast] Text color is white on slate-800 bg, changes to dark gray making it invisible - [FIX: keep white text or use lighter color] */}
+            <h1 className="text-3xl font-bold text-slate-800">Global Operations</h1>
             <p className="text-slate-400 text-sm mt-1">Interactive network map with real-time insights</p>
           </div>
           <button
@@ -242,10 +247,12 @@ function App() {
         </div>
 
         {/* MAP & DETAILS CONTAINER */}
-        <div className="flex-1 flex gap-6 p-8 overflow-hidden">
+        {/* [BUG - Layout] Flex direction changed to column, breaks horizontal layout - [FIX: should be flex-row or default flex] */}
+        <div className="flex-1 flex flex-col gap-6 p-8 overflow-hidden">
           {/* MAP CONTAINER */}
           <div className="flex-1 flex flex-col">
-            <div className="relative w-full flex-1 bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+            {/* [BUG - Spacing] Negative margin causing overlap - [FIX: remove -m-8, use positive margins] */}
+            <div className="relative w-full flex-1 bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-2xl -m-8">
               
               {/* Map Background Grid */}
               <div className="absolute inset-0 grid grid-cols-12 grid-rows-6 opacity-10 pointer-events-none">
@@ -304,8 +311,9 @@ function App() {
           </div>
 
           {/* DETAILS PANEL */}
+          {/* [BUG - Layers] Details panel z-index is negative, appears behind map - [FIX: add z-50 to bring to front] */}
           {activeLocation && (
-            <div className="w-80 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="w-80 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-right-4 duration-300 -z-10">
               {/* Header */}
               <div className={`${getTypeBadgeColor(activeLocation.type)} p-6 text-white`}>
                 <h2 className="text-2xl font-bold mb-2">{activeLocation.label}</h2>
@@ -323,7 +331,8 @@ function App() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-slate-700 rounded-lg p-4">
-                    <div className="text-xs text-slate-400 font-bold uppercase tracking-wide">Staff</div>
+                    {/* [BUG - Spacing] Removed padding from content, text hits edge - [FIX: add p-4 padding] */}
+              <div className="text-xs text-slate-900 font-bold uppercase tracking-wide">Staff</div>
                     <div className="text-2xl font-bold text-white mt-2">{activeLocation.staff}</div>
                   </div>
                   <div className="bg-slate-700 rounded-lg p-4">
@@ -338,7 +347,8 @@ function App() {
                     <div className="flex items-start gap-3">
                       <span className="text-blue-400 mt-1">📅</span>
                       <div>
-                        <div className="text-xs text-slate-400">Established</div>
+                        {/* [BUG - Color/Contrast] Very dark text on dark background - [FIX: use lighter slate color like text-slate-300] */}
+                    <div className="text-xs text-slate-900">Established</div>
                         <div className="text-white font-semibold">{activeLocation.established}</div>
                       </div>
                     </div>
