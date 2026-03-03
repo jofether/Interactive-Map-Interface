@@ -9,12 +9,12 @@
       "line_number": 141,
       "clean_code": "<div className=\"min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex overflow-hidden\">",
       "buggy_code": "<div className=\"min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex overflow-hidden relative -z-50\">",
-      "css_selector": ".min-h-screen",
+      "css_selector": ".min-h-screen.flex.overflow-hidden",
       "bounding_box": {
         "x": 0,
         "y": 0,
         "width": 1280,
-        "height": 851
+        "height": 900
       }
     },
     {
@@ -25,12 +25,12 @@
       "line_number": 143,
       "clean_code": "<div className={`${sidebarOpen ? 'w-96' : 'w-0'} bg-slate-800 border-r border-slate-700 transition-all duration-300 flex flex-col overflow-hidden`}>",
       "buggy_code": "<div className={`${sidebarOpen ? 'w-96' : 'w-0'} bg-slate-800 border-r border-slate-700 transition-all duration-300 flex flex-row overflow-hidden`}>",
-      "css_selector": ".bg-slate-800.border-r",
+      "css_selector": ".bg-slate-800.border-r.border-slate-700",
       "bounding_box": {
         "x": 0,
         "y": 0,
         "width": 384,
-        "height": 851
+        "height": 900
       }
     },
     {
@@ -41,7 +41,7 @@
       "line_number": 146,
       "clean_code": "<div className=\"grid grid-cols-2 gap-3\">",
       "buggy_code": "<div className=\"grid grid-cols-12 gap-3\">",
-      "css_selector": ".grid",
+      "css_selector": "div.bg-slate-800.border-r .grid.gap-3",
       "bounding_box": {
         "x": 24,
         "y": 24,
@@ -57,11 +57,11 @@
       "line_number": 173,
       "clean_code": "className=\"w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500\"",
       "buggy_code": "className=\"w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-xll text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-5\"",
-      "css_selector": "input[type=\"text\"]",
+      "css_selector": "div.bg-slate-800.border-r input.bg-slate-700",
       "bounding_box": {
-        "x": 274,
+        "x": 32,
         "y": 24,
-        "width": 37,
+        "width": 320,
         "height": 42
       }
     },
@@ -73,11 +73,11 @@
       "line_number": 173,
       "clean_code": "className=\"w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500\"",
       "buggy_code": "className=\"w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-xll text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-5\"",
-      "css_selector": "input[type=\"text\"]",
+      "css_selector": "div.bg-slate-800.border-r input.bg-slate-700",
       "bounding_box": {
-        "x": 274,
+        "x": 32,
         "y": 24,
-        "width": 37,
+        "width": 320,
         "height": 42
       }
     },
@@ -89,7 +89,7 @@
       "line_number": 231,
       "clean_code": "<div className=\"bg-slate-800 border-b border-slate-700 px-8 py-6 flex items-center justify-between\">",
       "buggy_code": "<div className=\"bg-slate-800 border-b border-slate-700 px-8 py-6 flex items-center justify-between\\\">",
-      "css_selector": ".bg-slate-800.border-b",
+      "css_selector": "div.bg-slate-800.border-b",
       "bounding_box": {
         "x": 384,
         "y": 0,
@@ -105,7 +105,7 @@
       "line_number": 233,
       "clean_code": "<h1 className=\"text-3xl font-bold text-white\">Global Operations</h1>",
       "buggy_code": "<h1 className=\"text-3xl font-bold text-slate-800\">Global Operations</h1>",
-      "css_selector": "h1",
+      "css_selector": "h1:has-text(\"Global Operations\")",
       "bounding_box": {
         "x": 416,
         "y": 24,
@@ -121,11 +121,11 @@
       "line_number": 245,
       "clean_code": "<div className=\"flex-1 flex gap-6 p-8 overflow-hidden\">",
       "buggy_code": "<div className=\"flex-1 flex flex-col gap-6 p-8 overflow-hidden\">",
-      "css_selector": ".flex-1",
+      "css_selector": ".flex-1.flex.gap-6",
       "bounding_box": {
-        "x": 384,
+        "x": 0,
         "y": 109,
-        "width": 896,
+        "width": 1280,
         "height": 742
       }
     },
@@ -137,9 +137,9 @@
       "line_number": 248,
       "clean_code": "<div className=\"relative w-full flex-1 bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-2xl\">",
       "buggy_code": "<div className=\"relative w-full flex-1 bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-2xl -m-8\">",
-      "css_selector": ".relative.shadow-2xl",
+      "css_selector": ".relative.w-full.rounded-xl",
       "bounding_box": {
-        "x": 384,
+        "x": 376,
         "y": 109,
         "width": 832,
         "height": 742
@@ -153,11 +153,11 @@
       "line_number": 308,
       "clean_code": "<div className=\"w-80 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-right-4 duration-300\">",
       "buggy_code": "<div className=\"w-80 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-right-4 duration-300 -z-10\">",
-      "css_selector": ".w-80.shadow-2xl",
+      "css_selector": ".w-80.bg-slate-800.rounded-xl",
       "bounding_box": {
-        "x": 928,
+        "x": 800,
         "y": 112,
-        "width": 320,
+        "width": 480,
         "height": 600
       }
     }
