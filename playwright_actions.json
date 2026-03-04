@@ -1,0 +1,5 @@
+{
+  "actions": [
+    { "name": "bug-10-OpenDetailsPanel", "selector": ".absolute.cursor-pointer" }
+  ]
+}
